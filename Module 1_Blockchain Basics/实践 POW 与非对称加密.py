@@ -5,7 +5,7 @@ Description:
 关键概念解析
 1 非对称加密核心：
     私钥：唯一且保密,只有持有者能生成有效签名,相当于 “数字签名章”；
-    公钥：公开可分发,任何人都能用它验证签名是否由对应私钥生成；
+    公钥：公开可分发,任何人都能用它验证签名是否由对应私钥生成；公钥仅能验证，无法伪造签名；
     防篡改：数据一旦被修改,公钥验证签名必然失败,无法伪造。
 2 签名与加密的区别：
     签名：私钥→签名（证明 “是我发的”）,公钥→验签（证明 “没被改”）；
@@ -87,6 +87,8 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
+
+#POW找到有效内容（昵称+nonce）→ 生成RSA公私钥 → 私钥签名该内容 → 公钥验证签名有效性 → 验证篡改数据的签名（失败）
 
 # ====================== 1. POW核心函数 ======================
 def mine_pow(nickname: str, target_zeros: int) -> tuple[float, str, str]:
