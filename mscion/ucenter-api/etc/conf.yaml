@@ -4,5 +4,5 @@ Port: 8888
 UCenterRpc:
   Etcd:
     Hosts:
-      - 127.0.0.1:2379
+     - 127.0.0.1:2379
     Key: ucenter.rpc

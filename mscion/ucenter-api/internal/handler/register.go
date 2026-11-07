@@ -1,6 +1,7 @@
 package handler
 
 import (
+	common "mscoin-common"
 	"net/http"
 	"ucenter-api/internal/logic"
 	"ucenter-api/internal/svc"
@@ -29,9 +30,7 @@ func (h *RegisterHandler) Register(w http.ResponseWriter, r *http.Request) {
 
 	l := logic.NewRegisterLogic(r.Context(), h.svcCtx)
 	resp, err := l.Register(&req)
-	if err != nil {
-		httpx.ErrorCtx(r.Context(), w, err)
-	} else {
-		httpx.OkJsonCtx(r.Context(), w, resp)
-	}
+	result := common.NeResult().Deal(resp, err)
+	httpx.OkJsonCtx(r.Context(), w, result)
+
 }
