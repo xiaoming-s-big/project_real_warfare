@@ -10,5 +10,5 @@ import (
 
 type Config struct {
 	rest.RestConf
-	UCenterRc zrpc.RpcClientConf
+	UCenterRpc zrpc.RpcClientConf
 }
