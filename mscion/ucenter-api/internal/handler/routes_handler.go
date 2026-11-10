@@ -15,7 +15,8 @@ func RegisterHandlers(r *Routers, serverCtx *svc.ServiceContext) {
 	//中间件
 
 	reister :=NewRegisterHandler(serverCtx)
-	reisterRouter :=r.Group()
-	reisterRouter.Get("/uc/register/phone",reister.Register)
+	reisterGroup :=r.Group()
+	reisterGroup.Get("/uc/register/phone",reister.Register)
+	reisterGroup.Get("/uc/mobile/code",reister.SendCode)
 
 }

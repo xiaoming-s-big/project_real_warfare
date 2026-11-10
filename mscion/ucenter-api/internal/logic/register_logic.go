@@ -39,3 +39,16 @@ func (l *RegisterLogic) Register(req *types.Request) (resp *types.Response, err 
 	return
 
 }
+
+func (l *RegisterLogic) SendCode(req *types.CodeRequest) (resp *types.Response, err error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	_, err = l.svcCtx.UCRegisterRpc.Sendcode(ctx, &register.CodeReq{
+		Phone:   req.Phone,
+		Country: req.Country,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return
+}
