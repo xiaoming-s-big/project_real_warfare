@@ -17,6 +17,6 @@ func RegisterHandlers(r *Routers, serverCtx *svc.ServiceContext) {
 	reister :=NewRegisterHandler(serverCtx)
 	reisterGroup :=r.Group()
 	reisterGroup.Get("/uc/register/phone",reister.Register)
-	reisterGroup.Get("/uc/mobile/code",reister.SendCode)
+	reisterGroup.Post("/uc/mobile/code",reister.SendCode)
 
 }

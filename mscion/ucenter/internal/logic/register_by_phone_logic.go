@@ -51,5 +51,5 @@ func (l *RegisterLogic) SendCode(req *register.CodeReq) (*register.NoRes, error)
 	if err != nil {
 		return nil, errors.New("验证码失败")
 	}
-	return nil, nil
+	return &register.NoRes{}, nil
 }

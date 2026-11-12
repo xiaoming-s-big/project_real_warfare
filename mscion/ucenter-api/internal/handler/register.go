@@ -43,7 +43,7 @@ func (h *RegisterHandler) SendCode(w http.ResponseWriter, r *http.Request) {
 	}
 
 	l := logic.NewRegisterLogic(r.Context(), h.svcCtx)
-	resp, err := l.SendCode(&req)                //接收返回值
-	result := common.NewResult().Deal(resp, err) //给一个返回值
+	resp, err := l.SendCode(&req)               //接收返回值
+	result := common.NeResult().Deal(resp, err) //给一个返回值
 	httpx.OkJsonCtx(r.Context(), w, result)
 }
